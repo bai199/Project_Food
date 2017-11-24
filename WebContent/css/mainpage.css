@@ -1,0 +1,134 @@
+@CHARSET "UTF-8";
+
+		#layer1{
+			position: absolute;
+			z-index:1;
+		}
+		#layer2{
+			position: absolute;
+			z-index:2;
+			height:100%;
+			width:100%;
+			top: 0px;
+			left: 0px;
+		}
+		#layer3{
+		position: absolute;
+			z-index:4;
+			height:1850px;
+			width:100%;
+			top: 0px;
+			left: 0px;
+			opacity:0.45;
+			filter:alpha(opacity=30);
+			background-color:black; 
+		}
+		#layers3{
+		position: absolute;
+			z-index:4;
+			height:650px;
+			width:100%;
+			top: 1900px;
+			left: 0px;
+			opacity:0.75;
+			filter:alpha(opacity=30);
+			background-color:black; 
+		}
+		#layer4{
+		position: absolute;
+			z-index:5;
+			height:1350px;
+			width:100%;
+			top: 600px;
+			left: 0px;
+			background-color:white;
+		}
+		#layer5{
+		position: absolute;
+			z-index:3;
+			height:10px;
+			width:100%;
+			top: 70px;
+			left: 0px;
+		}
+		#layer6{
+		position: absolute;
+			z-index:6;
+			height:70px;
+			width:400px;
+			top: 30px;
+			left: 1120px;
+		}
+		#layer7{
+		position: absolute;
+			z-index:7;
+			height:70px;
+			width:200px;
+			top: 30px;
+			left: 420px;
+		}
+		#layer8{
+		position: absolute;
+			z-index:8;
+			height:350px;
+			width:500px;
+			top: 260px;
+			left: 350px;
+		}
+		#layer9{
+		position: absolute;
+			z-index:5;
+			height:40px;
+			width:1850px;
+			top: 20px;
+			text-align: right;
+		} 
+		#layer10{
+		position: absolute;
+			z-index:10;
+			height:700px;
+			width:1300px;
+			top: 300px;
+			left:410px;
+		}
+		#layer11{
+		position: absolute;
+			z-index:10;
+			height:700px;
+			width:1900px;
+			top: 1150px;
+
+		}
+		#layer12{
+		position: absolute;
+			z-index:12;
+			height:300px;
+			width:100%;
+			top: 2050px;
+			left: 0px;
+			text-align: center;
+		}
+		#layer15{
+		position: absolute;
+		z-index:15;
+		width: 300px;
+		top:100px;
+		left: 1000px;
+		}
+		.daohang{
+		position: absolute;
+		z-index:13;
+		left: 60px;
+		top:270px;
+		}
+		#layer10 img:hover {
+		cursor: pointer;
+		
+		transition: all 0.6s; 
+   		transform: scale(1.2);
+		}
+		
+		a{
+		text-decoration: none;
+		}
+		

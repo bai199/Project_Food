@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.UserNamesDao">
+	
+	
+	<select id="searchByTel" resultMap="UserNamesByTel" parameterType="cn.etc.Model.UserNames">
+		select * from aproject_userNames where user_tel=#{user_tel}
+	</select>
+	
+	<resultMap type="cn.etc.Model.UserNames" id="UserNamesByTel">
+		<id property="user_id" column="user_id"  />
+		<result property="user_name" column="user_name" />
+		<result property="user_pass" column="user_pass" />
+		<result property="user_email" column="user_email" />
+		<result property="user_tel" column="user_tel" />
+		<result property="user_sex" column="user_sex" />
+		<result property="user_age" column="user_age" />
+		<result property="user_birthday" column="user_birthday" />
+		<result property="user_path" column="user_path" />
+		<result property="user_createDate" column="user_createDate" />
+		<result property="user_location" column="user_location" />
+		
+	</resultMap>
+</mapper>

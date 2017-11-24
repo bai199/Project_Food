@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.NoteDao">
+	<insert id="addNote" parameterType="note">
+	insert into note values(NOTE1.nextval,#{user_id},#{note_title},#{note_body},sysdate,#{talkClass_id},#{trNumber})
+	</insert>
+	<delete id="deleteNote" parameterType="java.lang.Integer">
+	delete from note where id=#{user_id}
+	</delete>
+	
+	<update id="updateNote" parameterType="note">
+		update note set trNumber=#{trNumber} where note_id=#{note_id}
+	</update>
+	<select id="searchBody" resultMap="BaseResultMap1" parameterType="note">
+		select * from note where note_id=#{note_id}	
+	</select>
+	<resultMap type="note" id="BaseResultMap1">
+		<id property="note_id" jdbcType="INTEGER" />
+		<result property="user_id" column="user_id" jdbcType="VARCHAR"/>
+		<result property="note_title" column="note_title" jdbcType="VARCHAR"/>
+		<result property="note_body" column="note_body" jdbcType="VARCHAR"/>
+		<result property="note_time" column="note_time" />
+		<result property="talkClass_id" column="talkClass_id" jdbcType="VARCHAR"/>
+		<result property="trNumber" column="trNumber" jdbcType="VARCHAR"/>
+		
+	</resultMap> 
+	<select id="searchAllById" resultMap="BaseResultMap1" parameterType="note">
+		select * from note  where talkClass_id=#{talkClass_id}  order by note_time desc
+	</select>
+	<select id="count" resultMap="BaseResultMap2">
+	select count(*) as total from note
+</select>
+
+<resultMap type="note" id="BaseResultMap2">
+	<result column="total" property="total"/>
+</resultMap>
+	
+	
+</mapper>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.LikeCateDao">
+	<select id="searchByUserIdlikecate" resultMap="BaseResultMap" parameterType="likecate">
+		select * from project_likecate where user_id=#{user_id}
+	</select>
+	<resultMap type="likecate" id="BaseResultMap">
+		<id column="like_id" property="like_id" jdbcType="INTEGER"/>
+		<result column="user_id" property="user_id" jdbcType="INTEGER"/>
+		<result column="cate_id" property="cate_id" jdbcType="INTEGER"/>
+		<result column="cate_class1" property="cate_class1" jdbcType="VARCHAR"/>
+		<result column="cate_make" property="cate_make" jdbcType="VARCHAR"/>
+		<result column="cate_hot" property="cate_hot" jdbcType="VARCHAR"/>
+		<result column="cate_taste" property="cate_taste" jdbcType="VARCHAR"/>
+		<result column="cate_area" property="cate_area" jdbcType="VARCHAR"/>
+		<result column="cate_makeclass" property="cate_makeclass" jdbcType="VARCHAR"/>
+		<result column="like_other" property="like_other" jdbcType="INTEGER"/>
+	</resultMap>
+</mapper>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.CateDao">
+
+	<select id="SearchByName" resultMap="BaseResultMap" parameterType="cate">
+		select * from project_cate where cate_name=#{cate_name}
+	</select>
+	
+	<select id="SearchByIdcate" resultMap="BaseResultMap" parameterType="cate">
+		select * from project_cate where cate_id=#{cate_id}
+	</select>
+	
+	<select id="SearchByTypecate" resultMap="BaseResultMap" parameterType="cate">
+		SELECT * FROM project_cate WHERE
+		<trim suffixOverrides="or">
+			<if test="cate_taste!=null">cate_taste=#{cate_taste} or</if>
+			<if test="cate_hot!=null">cate_hot=#{cate_hot} or</if>
+			<if test="cate_area!=null">cate_area=#{cate_area} or</if>
+			<if test="cate_makeClass!=null">cate_makeClass=#{cate_makeClass} or</if>
+			<if test="cate_other!=null">cate_other=#{cate_other} or</if>
+			<if test="cate_class1!=null">cate_class1=#{cate_class1} or</if>
+		</trim>
+	</select>
+	
+	<select id="SearchByHot" resultMap="BaseResultMap" parameterType="cate">
+		SELECT * FROM project_cate WHERE
+		<trim>
+			<if test="cate_taste!=null">cate_taste=#{cate_taste}</if>
+			<if test="cate_hot!=null">cate_hot=#{cate_hot}</if>
+			<if test="cate_area!=null">cate_area=#{cate_area}</if>
+			<if test="cate_makeClass!=null">cate_makeClass=#{cate_makeClass}</if>
+			<if test="cate_other!=null">cate_other=#{cate_other}</if>
+			<if test="cate_class1!=null">cate_class1=#{cate_class1}</if>
+		</trim>
+	</select>
+	
+	<select id="SearchAll" resultMap="BaseResultMap">
+		select * from project_cate
+	</select>
+	<resultMap type="cate" id="BaseResultMap">
+		<id column="cate_id" property="cate_id" jdbcType="INTEGER"/>
+		<result column="cate_name" property="cate_name" jdbcType="VARCHAR"/>
+		<result column="cate_class1" property="cate_class1" jdbcType="VARCHAR"/>
+		<result column="cate_class2" property="cate_class2" jdbcType="VARCHAR"/>
+		<result column="cate_class3" property="cate_class3" jdbcType="VARCHAR"/>
+		<result column="cate_make" property="cate_make" jdbcType="VARCHAR"/>
+		<result column="cate_hot" property="cate_hot" jdbcType="VARCHAR"/>
+		<result column="cate_taste" property="cate_taste" jdbcType="VARCHAR"/>
+		<result column="cate_area" property="cate_area" jdbcType="VARCHAR"/>
+		<result column="cate_makeClass" property="cate_makeClass" jdbcType="VARCHAR"/>
+		<result column="cate_other" property="cate_other" jdbcType="VARCHAR"/>
+		<result column="cate_path" property="cate_path" jdbcType="VARCHAR"/>
+		<result column="cate_burdening" property="cate_burdening" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	<select id="getCount" resultMap="BaseResultMap1" parameterType="cate">
+		<!-- select count(*) as cate from project_cate -->
+		<!-- 按类型查询之后做分页 -->
+		SELECT COUNT(*) AS cate FROM project_cate WHERE
+		<trim suffixOverrides="or">
+			<if test="cate_taste!=null">cate_taste=#{cate_taste} or</if>
+			<if test="cate_hot!=null">cate_hot=#{cate_hot} or</if>
+			<if test="cate_area!=null">cate_area=#{cate_area} or</if>
+			<if test="cate_makeClass!=null">cate_makeClass=#{cate_makeClass} or</if>
+			<if test="cate_other!=null">cate_other=#{cate_other} or</if>
+			<if test="cate_class1!=null">cate_class1=#{cate_class1} or</if>
+		</trim>
+	</select>
+	
+	<resultMap type="cate" id="BaseResultMap1">
+		<result column="cate" property="total"/>
+	</resultMap>
+	
+	<insert id="Add" parameterType="cate">
+		insert into project_cate
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="cate_id!=null">cate_id,</if>
+		<if test="cate_name!=null">cate_name,</if>
+		<if test="cate_class1!=null">cate_class1,</if>
+		<if test="cate_class2!=null">cate_class2,</if>
+		<if test="cate_class3!=null">cate_class3,</if>
+		<if test="cate_make!=null">cate_make,</if>
+		<if test="cate_hot!=null">cate_hot,</if>
+		<if test="cate_taste!=null">cate_taste,</if>
+		<if test="cate_area!=null">cate_area,</if>
+		<if test="cate_makeClass!=null">cate_makeClass,</if>
+		<if test="cate_other!=null">cate_other,</if>
+		<if test="cate_path!=null">cate_path,</if>
+		<if test="cate_burdening!=null">cate_burdening,</if>
+	</trim>
+	<trim prefix="values(" suffix=")" suffixOverrides=",">
+		<if test="cate_id!=null">#{cate_id},</if>
+		<if test="cate_name!=null">#{cate_name},</if>
+		<if test="cate_class1!=null">#{cate_class1},</if>
+		<if test="cate_class2!=null">#{cate_class2},</if>
+		<if test="cate_class3!=null">#{cate_class3},</if>
+		<if test="cate_make!=null">#{cate_make},</if>
+		<if test="cate_hot!=null">#{cate_hot},</if>
+		<if test="cate_taste!=null">#{cate_taste},</if>
+		<if test="cate_area!=null">#{cate_area},</if>
+		<if test="cate_makeClass!=null">#{cate_makeClass},</if>
+		<if test="cate_other!=null">#{cate_other},</if>
+		<if test="cate_path!=null">#{cate_path},</if>
+		<if test="cate_burdening!=null">#{cate_burdening},</if>
+	</trim>
+	</insert>
+	
+	<update id="Update" parameterType="cate">
+		update project_cate
+		<set>
+			<trim suffixOverrides=",">
+			<if test="cate_name!=null">cate_name=#{cate_name},</if>
+			<if test="cate_class1!=null">cate_class1=#{cate_class1},</if>
+			<if test="cate_class2!=null">cate_class2=#{cate_class2},</if>
+			<if test="cate_class3!=null">cate_class3=#{cate_class3},</if>
+			<if test="cate_make!=null">cate_make=#{cate_make},</if>
+			<if test="cate_hot!=null">cate_hot=#{cate_hot},</if>
+			<if test="cate_taste!=null">cate_taste=#{cate_taste},</if>
+			<if test="cate_area!=null">cate_area=#{cate_area},</if>
+			<if test="cate_makeClass!=null">cate_makeClass=#{cate_makeClass},</if>
+			<if test="cate_other!=null">cate_other=#{cate_other},</if>
+			<if test="cate_path!=null">cate_path=#{cate_path},</if>
+			<if test="cate_burdening!=null">cate_burdening=#{cate_burdening},</if>
+			</trim>
+		</set>
+		where cate_id=#{cate_id}
+	</update>
+	
+	<delete id="Delete" parameterType="cate">
+		delete from project_cate where cate_id=#{cate_id}
+	</delete>
+	
+</mapper>

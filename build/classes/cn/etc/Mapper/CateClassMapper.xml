@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.CateClassDao">
+	<select id="SearchAll" resultMap="BaseResultMap">
+		select * from project_cateclass
+	</select>
+	<resultMap type="cateclass" id="BaseResultMap">
+		<id column="cateclass_id" property="cateclass_id" jdbcType="INTEGER"/>
+		<result column="cateclass_name" property="cateclass_name" jdbcType="VARCHAR"/>
+	</resultMap>
+
+	 <insert id="Add" parameterType="cateclass" >
+		insert into project_cateclass values(#{cateclass_id},#{cateclass_name})
+		insert into project_cateclass
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="cateclass_id!=null">cateclass_id,</if>
+		<if test="cateclass_name!=null">cateclass_name,</if>
+	</trim>
+	<trim prefix="values(" suffix=")" suffixOverrides=",">
+		<if test="cateclass_id!=null">#{cateclass_id},</if>
+		<if test="cateclass_name!=null">#{cateclass_name},</if>
+	</trim>
+	</insert>
+	
+	<update id="Update" parameterType="cateclass">
+		update project_cateclass
+		<set>
+		<trim suffixOverrides=",">
+		<if test="cateclass_name!=null">cateclass_name=#{cateclass_name},</if>
+		</trim>
+		</set>
+		where cateclass_id=#{cateclass_id}
+	</update>
+	
+	<delete id="Delete" parameterType="java.lang.Integer">
+		DELETE FROM project_cateclass where cateclass_id=#{cateclass_id}
+	</delete> 
+</mapper>

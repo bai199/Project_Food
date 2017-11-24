@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.TalkClassDao">
+	<insert id="add" parameterType="talkClass">
+	insert into talkclass values(NOTES.nextval,#{class_name},#{talkClass_discuss})
+	</insert>
+	<delete id="delete" parameterType="java.lang.Integer">
+	delete from talkclass where id=#{talkClass_id}
+	</delete>
+	
+	<select id="searchAll" resultMap="BaseResultMap1" parameterType="talkClass">
+		select * from talkclass 	
+	</select>
+	<resultMap type="note" id="BaseResultMap1">
+		<id property="talkClass_id" jdbcType="INTEGER" />
+		<result property="class_name" column="class_name" jdbcType="VARCHAR"/>
+		<result property="talkClass_discuss" column="talkClass_discuss" jdbcType="VARCHAR"/>
+		
+	</resultMap>
+	<update id="update" parameterType="talkClass">
+		update  talkclass set class_name=#{class_name}
+	</update>
+</mapper>

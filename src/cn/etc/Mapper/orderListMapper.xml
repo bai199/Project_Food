@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.OrderListDao">
+	
+	<select id="searchByOrder" resultMap="OrderList" parameterType="cn.etc.Model.OrderList">
+		select b.food_name,a.* from aproject_OrderList a,aproject_menu b  where a.food_id=b.food_id AND  order_id=#{order_id}
+	</select>
+	
+	<resultMap type="cn.etc.Model.OrderList" id="OrderList">
+		<id property="orderList_id" column="orderList_id"  />
+		<result property="food_id" column="food_id" />
+		<result property="food_price" column="food_price" />
+		<result property="shop_count" column="shop_count" />
+		<result property="order_id" column="order_id" />
+		<result property="food_name" column="food_name" />
+	</resultMap>
+	<insert id="addOrderList" parameterType="cn.etc.Model.OrderList">
+		insert into aproject_orderList values(orderList.Nextval,#{food_id},#{food_price},#{shop_count},#{order_id})
+	</insert>
+	<delete id="deleteOrderList" parameterType="cn.etc.Model.OrderList">
+		delete from aproject_orderList where orderList_id=#{orderList_id}
+	</delete>
+</mapper>

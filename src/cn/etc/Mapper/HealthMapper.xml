@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.HealthDao">
+
+	<select id="searchAll" resultMap="BaseResultMap" >
+			select * from health
+	</select>
+	
+	<select id="searchByHealthClass123Id" resultType="java.util.HashMap"  parameterType="java.util.HashMap">
+			SELECT *
+			  FROM (SELECT a.*, ROWNUM rn
+			          FROM (
+							select * from health where health_class1=#{healthclass_id} or health_class2=#{healthclass_id} or health_class3=#{healthclass_id}
+						) a
+			         WHERE ROWNUM &lt;= #{end})
+			 WHERE rn &gt;= #{start}
+	
+	</select>
+	<select id="searchByID" resultMap="BaseResultMap" parameterType="health"	>
+			select * from health where health_id=#{health_id}
+	</select>
+	
+	
+	
+	
+	<select id="LikeSearch" resultMap="BaseResultMap" parameterType="java.lang.String">
+			select * from health where health_name like '%'||#{id,jdbcType=VARCHAR}||'%'
+	</select>
+	
+	
+	<select id="getCount" resultType="java.lang.Integer" parameterType="java.lang.Integer">
+				select count(*) c from health where health_class1=#{healthclass_id} or health_class2=#{healthclass_id} or health_class3=#{healthclass_id} 
+	</select>
+	<resultMap type="health" id="BaseResultMap1">
+		<result column="total" property="total" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	
+	
+	
+	<resultMap type="health" id="BaseResultMap">
+		<id column="health_id" property="health_id" jdbcType="INTEGER"/>
+		<result column="health_name" property="health_name" jdbcType="VARCHAR"/>
+		<result column="health_class1" property="health_class1" jdbcType="VARCHAR"></result>
+		<result column="health_class2" property="health_class2" jdbcType="VARCHAR"></result>
+		<result column="health_class3" property="health_class3" jdbcType="VARCHAR"></result>
+		<result column="health_title" property="health_title" jdbcType="VARCHAR"></result>
+		<result column="health_body" property="health_body" jdbcType="VARCHAR"></result>
+		<result column="health_other" property="health_other" jdbcType="VARCHAR"></result>
+		<result column="health_path" property="health_path" jdbcType="VARCHAR"/>
+	</resultMap>
+	
+	
+	<!-- <select id="searchCount" resultMap="BaseResultMap1">
+		select count(*) as total from topic
+	</select> -->
+	
+	<!-- <resultMap type="health" id="BaseResultMap1">
+		<result column="total" property="total"/>
+	</resultMap>
+ -->
+
+
+</mapper>

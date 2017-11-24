@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+#layer13{
+		position: absolute;
+			z-index:13;
+			height:440px;
+			width:600px;
+			top: 100px;
+			/* left: 300px; */
+		}
+#layer14{
+		position: absolute;
+			z-index:14;
+			height:440px;
+			width:1180px;
+			top: 100px;
+			left: 458px;
+			/* background-color:white; */
+		}

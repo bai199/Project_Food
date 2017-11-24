@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 省略起别名 -->
+	<typeAliases>
+		<typeAlias type="cn.etc.Model.UserNames" alias="usernames"/>
+		<typeAlias type="cn.etc.Model.Note" alias="note"/>
+		<typeAlias type="cn.etc.Model.Reply" alias="reply"/>
+		<typeAlias type="cn.etc.Model.TalkClass" alias="talkClass"/>
+		<typeAlias type="cn.etc.Model.Health" alias="health"/>
+		<typeAlias type="cn.etc.Model.HealthClass" alias="healthClass"/>
+		
+	 	<typeAlias type="cn.etc.Model.Cate" alias="cate"/> 
+	 	<typeAlias type="cn.etc.Model.CateClass" alias="cateclass"/>
+	 	<typeAlias type="cn.etc.Model.LikeCate" alias="likecate" />
+	
+		
+	</typeAliases>
+	
+	<!-- 引入映射关系 -->
+	<mappers>
+		<mapper resource="cn/etc/Mapper/businessMapper.xml"/>
+		<mapper resource="cn/etc/Mapper/menuMapper.xml"/>
+		<mapper resource="cn/etc/Mapper/businessClassMapper.xml"/>
+		<mapper resource="cn/etc/Mapper/userNamesMapper.xml"/>
+		<mapper resource="cn/etc/Mapper/orderListMapper.xml"/>
+		<mapper resource="cn/etc/Mapper/orderMapper.xml"/>
+		
+		<!-- 孟 -->
+		<mapper resource="cn/etc/Mapper/NoteMapper.xml"/>
+		<mapper resource="cn/etc/Mapper/ReplyMapper.xml"/>
+		<mapper resource="cn/etc/Mapper/TalkClassMapper.xml"/>
+		<!--付  -->
+		<mapper resource="cn/etc/Mapper/HealthMapper.xml"/>
+		<mapper resource="cn/etc/Mapper/HealthClassMapper.xml"/>
+		<!--王  -->
+		<mapper resource="cn/etc/Mapper/CateClassMapper.xml"/>
+ 	  	<mapper resource="cn/etc/Mapper/CateMapper.xml"/>
+ 	  	<mapper resource="cn/etc/Mapper/LikeCateMapper.xml"/>
+	</mappers>
+</configuration>

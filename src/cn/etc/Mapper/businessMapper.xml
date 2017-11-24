@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.BusinessDao">
+	<insert id="addBusiness" parameterType="cn.etc.Model.Business">
+	INSERT  INTO aproject_business VALUES(9,#{business_name},#{businessClass_id},#{business_tel},#{business_location},0,0,#{intelligence},#{announcement},#{startPrice},#{sendPrice},#{boxPrice},#{sendTime},#{other},#{business_pass})
+	</insert>
+	
+	<select id="searchBusinessByName" resultMap="businessByName" >
+		select * from aproject_business where business_name=#{business_name}
+	</select>
+	
+	<select id="searchBusinessById" resultMap="businessByName" >
+		select * from aproject_business where business_id=#{business_id}
+	</select>
+	
+	<resultMap type="cn.etc.Model.Business" id="businessByName">
+		<id property="business_id" column="business_id"  />
+		<result property="business_name" column="business_name" />
+		<result property="business_pass" column="business_pass" />
+		<result property="businessClass_id" column="businessClass_id" />
+		<result property="business_tel" column="business_tel" />
+		<result property="business_location" column="business_location" />
+		<result property="business_bill" column="business_bill" />
+		<result property="business_income" column="business_income" />
+		<result property="intelligence" column="intelligence" />
+		<result property="announcement" column="announcement" />
+		<result property="startPrice" column="startPrice" />
+		<result property="sendPrice" column="sendPrice" />
+		<result property="boxPrice" column="boxPrice" />
+		<result property="sendTime" column="sendTime" />
+		<result property="other" column="other" />
+		
+	</resultMap>
+	
+	<select id="searchBusinessByType" resultMap="businessByName" >
+		select * from aproject_business where businessClass_id=#{businessClass_id}
+	</select>
+	
+	<select id="searchBusinessBySearch" resultMap="businessByName" >
+		select * from aproject_business where business_name like '%'||#{business_name,jdbcType=VARCHAR}||'%'
+	</select>
+	
+	<select id="searchBusinessAll" resultMap="businessByName" >
+		select * from aproject_business 
+	</select>
+	
+	<update id="updateBusinessCount" parameterType="cn.etc.Model.Business">
+		UPDATE aproject_business SET business_bill=#{business_bill} WHERE business_id=#{business_id}
+	</update>
+</mapper>

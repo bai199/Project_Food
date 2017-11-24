@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.ReplyDao">
+	<insert id="add" parameterType="reply">
+	insert into reply values(reply1.nextval,#{user_id},#{users_id},#{reply_body},sysdate,#{note_id})
+	</insert>
+	<delete id="delete" parameterType="java.lang.Integer">
+	delete from reply where id=#{user_id}
+	</delete>
+	
+	<select id="searchAllReply" resultMap="BaseResultMap1" parameterType="java.lang.Integer">
+		select *  from reply  order by reply_time desc	
+	</select>
+	<resultMap type="reply" id="BaseResultMap1">
+		<id property="reply_id" jdbcType="INTEGER" />
+		<result property="user_id" column="user_id" jdbcType="INTEGER"/>
+		<result property="users_id" column="users_id" jdbcType="INTEGER"/>
+		<result property="reply_body" column="reply_body" jdbcType="VARCHAR"/>
+		<result property="reply_time" column="reply_time" />
+	</resultMap>
+	
+	<select id="count" resultMap="BaseResultMap2" parameterType="java.lang.Integer">
+		select count(*) as total from reply where note_id=#{note_id}
+	</select>
+
+	<resultMap type="reply" id="BaseResultMap2">
+		<result column="total" property="total"/>
+	</resultMap>
+	
+</mapper>

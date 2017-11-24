@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.BusinessClassDao">
+	<select id="searchBusinessClassAll" resultMap="searchBusinessClassAll">
+		select * from aproject_businessClass
+	
+	</select>
+
+	<resultMap type="cn.etc.Model.BusinessClass" id="searchBusinessClassAll">
+		<id property="businessClass_id" column="businessClass_id"/>
+		<result property="businessClass" column="businessClass"/>
+
+	</resultMap>
+</mapper>

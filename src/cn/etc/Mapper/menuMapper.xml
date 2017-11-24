@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.MenuDao">
+	<!-- <insert id="addMenu" parameterType="cn.etc.Model.Business">
+	INSERT  INTO aproject_menu VALUES(2,#{food_name;},#{food_class1},#{food_class2},#{food_class3},#{food_hot},#{food_taste},#{food_makeClass},
+		#{food_other},#{food_path},#{food_count},#{business_id},#{food_talkId},#{food_price})
+	
+	</insert> -->
+	
+	<select id="searchMenuByBusiness" resultMap="MenuByName" parameterType="cn.etc.Model.Menu">
+		select * from aproject_menu where business_id=#{business_id}
+	</select>
+	
+	<select id="searchByFoodId" resultMap="MenuByName" parameterType="cn.etc.Model.Menu">
+		select * from aproject_menu where food_id=#{food_id}
+	</select>
+	
+	<resultMap type="cn.etc.Model.Menu" id="MenuByName">
+		<id property="food_id" column="food_id"  />
+		<result property="food_name" column="food_name" />
+		<result property="food_class1" column="food_class1" />
+		<result property="food_class2" column="food_class2" />
+		<result property="food_class3" column="food_class3" />
+		<result property="food_hot" column="food_hot" />
+		<result property="food_taste" column="food_taste" />
+		<result property="food_makeClass" column="food_makeClass" />
+		<result property="food_other" column="food_other" />
+		<result property="food_path" column="food_path" />
+		<result property="food_count" column="food_count" />
+		<result property="business_id" column="business_id" />
+		<result property="food_talkId" column="food_talkId" />
+		<result property="food_price" column="food_price" />
+		
+	</resultMap>
+</mapper>

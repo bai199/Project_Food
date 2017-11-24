@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.OrderDao">
+	
+	<insert id="addOrder" parameterType="cn.etc.Model.Order">
+		insert into aproject_order values(#{order_id},#{business_id},#{user_tel},'',#{order_location},#{send_time},#{pay_type},1,#{order_sum},#{order_time})
+	</insert>
+	
+	<select id="searchByOrderAndOrderList" resultMap="aa" parameterType="cn.etc.Model.Order"> 
+		SELECT sum(b.shop_count) AS counts FROM aproject_order a,aproject_orderlist b WHERE a.order_id = b.order_id AND a.business_id=#{business_id}
+	</select>
+	<resultMap type="cn.etc.Model.Order" id="aa">
+		<result property="count" column="counts"/>
+	</resultMap>
+	<select id="searchByBusiness" resultMap="searchByBusiness" parameterType="cn.etc.Model.Order" >
+		select * from aproject_order where business_id=#{business_id} ORDER BY send_time DESC
+	</select>
+	<resultMap type="cn.etc.Model.Order" id="searchByBusiness">
+		<id property="order_id" column="order_id"/>
+		<result property="business_id" column="business_id"/>
+		<result property="user_tel" column="user_id"/>
+		<result property="food_id" column="food_id"/>
+		<result property="order_location" column="order_location"/>
+		<result property="send_time" column="send_time"/>
+		<result property="pay_type" column="pay_type"/>
+		<result property="remark" column="remark"/>
+		<result property="order_sum" column="order_sum"/>
+		<result property="order_time" column="order_time"/>
+	</resultMap>
+	
+</mapper>

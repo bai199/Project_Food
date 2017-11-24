@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.etc.Dao.HealthClassDao">
+
+	<select id="searchAll" resultMap="BaseResultMap">
+			select * from healthclass
+	</select>
+	
+	<resultMap type="healthClass" id="BaseResultMap">
+		<id column="healthclass_id" property="healthclass_id" jdbcType="INTEGER"/>
+		<result column="healthclass_name" property="healthclass_name" jdbcType="VARCHAR"></result>
+	</resultMap>
+	
+	<!-- <select id="searchCount" resultMap="BaseResultMap1">
+		select count(*) as total from topic
+	</select> -->
+	
+	<!-- <resultMap type="health" id="BaseResultMap1">
+		<result column="total" property="total"/>
+	</resultMap>
+ -->
+</mapper>
